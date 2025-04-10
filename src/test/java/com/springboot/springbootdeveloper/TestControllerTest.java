@@ -43,11 +43,14 @@ class TestControllerTest {
     @DisplayName("getAllMembers : 아티클 조회 성공")
     @Test
     public void getAllMembers() throws Exception {
+        //given
         final String url = "/test";
         Member savedMember = memberRepository.save(new Member(1L, "홍길동"));
 
+        //when
         final ResultActions result = mockMvc.perform(get(url).accept(MediaType.APPLICATION_JSON));
 
+        //then
         result.andExpect(status().isOk()).andExpect(jsonPath("$[0].id").value(savedMember.getId())).andExpect(jsonPath("$[1].name").value(savedMember.getName()));
     }
 }
