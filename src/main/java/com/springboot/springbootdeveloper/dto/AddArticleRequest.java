@@ -1,0 +1,23 @@
+package com.springboot.springbootdeveloper.dto;
+
+import com.springboot.springbootdeveloper.domain.Article;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+public class AddArticleRequest {
+    
+    private String title;
+    private String content;
+    
+    public Article toArticle() {    //생성자를 사용해 객체 생성
+        return Article.builder()
+                .title(title)
+                .content(content)
+                .build();
+    }
+}
+
